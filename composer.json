@@ -1,0 +1,15 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "name": "andrei/hero-game",
+    "authors": [
+        {
+            "name": "comanandrei1993",
+            "email": "comanandrei1993@gmail.com"
+        }
+    ],
+    "require": {}
+}
