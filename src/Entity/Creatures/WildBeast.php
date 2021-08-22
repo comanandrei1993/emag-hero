@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Creatures;
 
 use App\Core\BaseCreature;
 use App\Inerfaces\Abilities\Attack;
@@ -37,8 +37,12 @@ class WildBeast extends BaseCreature implements Attack, TakeDamage
         return $this->name;
     }
 
-    public function attack($defDefence)
+    public function attack($defDefence, $defLuck)
     {
+        if($this->missAttack($defLuck)) {
+            return 0;
+        }
+
         if ($this->getStrength() - $defDefence > 0) {
             return $this->getStrength() - $defDefence;
         } else {

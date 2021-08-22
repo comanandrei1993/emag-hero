@@ -16,11 +16,12 @@ function battle($opp1, $opp2)
         $first->getHealth() != 0 &&
         $second->getHealth() != 0
     ) {
-        $second->takeDamage($first, $first->attack($second->getDefence()));
-        $first->takeDamage($second, $second->attack($first->getDefence()));
+        $second->takeDamage($first, $first->attack($second->getDefence(), $second->getLuck()));
+        $first->takeDamage($second, $second->attack($first->getDefence(),  $first->getLuck()));
 
         if ($countTurns == 20) {
-            echo "It\'s a draw!\n";
+            echo "It's a draw!\n";
+            return;
         }
 
         $countTurns++;

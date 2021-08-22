@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Creatures;
 
 use App\Core\BaseCreature;
 use App\Inerfaces\Abilities\Attack;
@@ -38,17 +38,21 @@ class Player extends BaseCreature implements Attack, TakeDamage, RapidStrike, Ma
         return $this->name;
     }
 
-    public function attack($defDefence)
+    public function attack($defDefence, $defLuck)
     {
-            return $this->rapidStrike($defDefence);
-    }
-
-    public function missAttack($defLuck) {
-        if(rand(1, $defLuck) <= $defLuck) {
-            echo $this->getName().' misses their attack!';
+        if($this->missAttack($defLuck)) {
             return 0;
         }
+        return $this->rapidStrike($defDefence);
     }
+
+//    public function attack($attacker)
+//    {
+//        if($this->missAttack($attacker->getLuck())) {
+//            return 0;
+//        }
+//        return $this->rapidStrike($attacker->getDefence());
+//    }
 
     public function rapidStrike($defDefence)
     {

@@ -2,7 +2,9 @@
 
 namespace App\Core;
 
-abstract class BaseCreature
+use App\Inerfaces\BadEffects\Miss;
+
+abstract class BaseCreature implements Miss
 {
     private $health;
 
@@ -129,4 +131,16 @@ abstract class BaseCreature
             $this->setHealth(0);
         }
     }
+
+    public function missAttack($defLuck)
+    {
+        if(rand(1, 100) <= $defLuck) {
+            echo $this->getName().' misses their attack!';
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }

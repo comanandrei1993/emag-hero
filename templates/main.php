@@ -2,11 +2,11 @@
 /////////////// CLASSES /////////////////////
 // Player Class
 /** @var Player $orderus */
-use App\Entity\Player;
+use App\Entity\Creatures\Player;
 
 // WildBeast Class
 /** @var WildBeast $wildBeast */
-use \App\Entity\WildBeast;
+use App\Entity\Creatures\WildBeast;
 
 ////////////// END OF CLASSES //////////////
 
