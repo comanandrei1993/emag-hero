@@ -37,19 +37,6 @@ class WildBeast extends BaseCreature implements Attack, TakeDamage
         return $this->name;
     }
 
-//    public function attack($defDefence, $defLuck)
-//    {
-//        if($this->missAttack($defLuck)) {
-//            return 0;
-//        }
-//
-//        if ($this->getStrength() - $defDefence > 0) {
-//            return $this->getStrength() - $defDefence;
-//        } else {
-//            return 0;
-//        }
-//    }
-
     public function attack($attacker)
     {
         if($this->missAttack($attacker->getLuck())) {

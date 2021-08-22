@@ -61,18 +61,6 @@ $wildBeast = new WildBeast();
             </tr>
             </tbody>
         </table>
-
-        <div class="row">
-            <div class="col-4"></div>
-
-            <div class="col-4">
-                <button class="btn btn-warning">
-                    Next turn
-                </button>
-            </div>
-
-            <div class="col-4"></div>
-        </div>
     </div>
 
     <div class="col-6">

@@ -1,8 +1,10 @@
 <?php
-include 'vendor/autoload.php';
-include 'processes/functions.php';
+require 'vendor/autoload.php';
 
 require 'processes/battle.php'
+
+/** @var \App\Entity\Creatures\Player $orderus */
+/** @var \App\Entity\Creatures\WildBeast $wildBeast */
 ?>
 
 <!DOCTYPE html>
