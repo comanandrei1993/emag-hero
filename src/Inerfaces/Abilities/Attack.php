@@ -4,5 +4,5 @@ namespace App\Inerfaces\Abilities;
 
 interface Attack
 {
-    public function attack($defDefence, $defLuck);
+    public function attack($attacker);
 }

@@ -38,21 +38,21 @@ class Player extends BaseCreature implements Attack, TakeDamage, RapidStrike, Ma
         return $this->name;
     }
 
-    public function attack($defDefence, $defLuck)
-    {
-        if($this->missAttack($defLuck)) {
-            return 0;
-        }
-        return $this->rapidStrike($defDefence);
-    }
-
-//    public function attack($attacker)
+//    public function attack($defDefence, $defLuck)
 //    {
-//        if($this->missAttack($attacker->getLuck())) {
+//        if($this->missAttack($defLuck)) {
 //            return 0;
 //        }
-//        return $this->rapidStrike($attacker->getDefence());
+//        return $this->rapidStrike($defDefence);
 //    }
+
+    public function attack($attacker)
+    {
+        if($this->missAttack($attacker->getLuck())) {
+            return 0;
+        }
+        return $this->rapidStrike($attacker->getDefence());
+    }
 
     public function rapidStrike($defDefence)
     {
