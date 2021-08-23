@@ -47,7 +47,9 @@ class Battle
             $second->getHealth() != 0
         ) {
             $second->takeDamage($first, $first->attack($second));
+            BattleLog::addToLog($second->getName()."'s remaining HP is: ".$second->getHealth());
             $first->takeDamage($second, $second->attack($first));
+            BattleLog::addToLog($first->getName()."'s remaining HP is: ".$first->getHealth());
 
             if ($countTurns == 20) {
                 BattleLog::addToLog("It's a draw!\n");
