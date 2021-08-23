@@ -2,9 +2,11 @@
 
 namespace App\Core;
 
-use App\Inerfaces\BadEffects\Miss;
+use App\Traits\Abilities\Attack;
+use App\Traits\BadEffects\MissAttack;
+use App\Traits\BadEffects\TakeDamage;
 
-abstract class BaseCreature implements Miss
+abstract class BaseCreature
 {
     private $health;
 
@@ -126,21 +128,24 @@ abstract class BaseCreature implements Miss
         }
     }
 
+    /////////////////////////////
+    // Implement Attack Trait //
+    ///////////////////////////
+    use Attack;
+
     public function checkIfDead() {
         if ($this->getHealth() < 0) {
             $this->setHealth(0);
         }
     }
 
-    public function missAttack($defLuck)
-    {
-        if(rand(1, 100) <= $defLuck) {
-            echo $this->getName().' misses their attack!';
-            return true;
-        } else {
-            return false;
-        }
-    }
+    /////////////////////////////////
+    // Implement TakeDamage Trait //
+    ///////////////////////////////
+    use TakeDamage;
 
-
+    /////////////////////////////////
+    // Implement MissAttack Trait //
+    ///////////////////////////////
+    use MissAttack;
 }

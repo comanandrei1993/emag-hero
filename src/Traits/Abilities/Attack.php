@@ -6,7 +6,7 @@ trait Attack
 {
     public function attack($defendant)
     {
-        if($this->missAttack($defendant->getLuck())) {
+        if($this->missAttack($defendant)) {
             return 0;
         }
 

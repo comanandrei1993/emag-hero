@@ -1,24 +1,21 @@
 <?php
 namespace Tests\Unit;
 
-use App\Entity\Battle;
 use App\Entity\Creatures\Player;
 use App\Entity\Creatures\WildBeast;
+use PHPUnit\Framework\TestCase;
 
-class BattleTest extends \PHPUnit\Framework\TestCase {
+class PlayerDealsDamageTest extends TestCase {
     public function testMissAttack() {
         $wildBeast = new WildBeast();
-        $wildBeast->setLuck(100);
-        $wildBeast->setStrength(20);
-        $wildBeast->setHealth(100);
+        $wildBeast->setLuck(0);
+        $wildBeast->setDefence(0);
 
         $orderus = new Player();
-        $orderus->setLuck(50);
         $orderus->setStrength(100);
-        $orderus->setHealth(100);
 
         $result = $orderus->attack($wildBeast);
 
-        $this->assertEquals(0, $result);
+        $this->assertEquals(100, $result);
     }
 }

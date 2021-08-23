@@ -3,10 +3,8 @@
 namespace App\Entity\Creatures;
 
 use App\Core\BaseCreature;
-use App\Inerfaces\Abilities\Attack;
-use App\Inerfaces\BadEffects\TakeDamage;
 
-class WildBeast extends BaseCreature implements Attack, TakeDamage
+class WildBeast extends BaseCreature
 {
     private $name;
 
@@ -36,26 +34,4 @@ class WildBeast extends BaseCreature implements Attack, TakeDamage
     {
         return $this->name;
     }
-
-    public function attack($defendant)
-    {
-        if($this->missAttack($defendant->getLuck())) {
-            return 0;
-        }
-
-        if ($this->getStrength() - $defendant->getDefence() > 0) {
-            return $this->getStrength() - $defendant->getDefence();
-        } else {
-            return 0;
-        }
-    }
-
-    public function takeDamage($attacker, $dmg)
-    {
-        $this->setHealth($this->getHealth() - $dmg);
-        echo $attacker->getName() . " attacks " . $this->getName() . " for " . $dmg . " damage!\n";
-        $this->checkIfDead();
-    }
-
-
 }

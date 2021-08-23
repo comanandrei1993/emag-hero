@@ -3,12 +3,10 @@
 namespace App\Entity\Creatures;
 
 use App\Core\BaseCreature;
-use App\Inerfaces\Abilities\Attack;
 use App\Inerfaces\Abilities\MagicShield;
 use App\Inerfaces\Abilities\RapidStrike;
-use App\Inerfaces\BadEffects\TakeDamage;
 
-class Player extends BaseCreature implements Attack, TakeDamage, RapidStrike, MagicShield
+class Player extends BaseCreature implements  RapidStrike, MagicShield
 {
     private $name;
 
@@ -40,28 +38,34 @@ class Player extends BaseCreature implements Attack, TakeDamage, RapidStrike, Ma
 
     public function attack($defendant)
     {
-        if($this->missAttack($defendant->getLuck())) {
+        if($this->missAttack($defendant)) {
             return 0;
         }
 
-        return $this->rapidStrike($defendant->getDefence());
+        return $this->rapidStrike($defendant);
     }
 
-    public function rapidStrike($defDefence)
+    public function rapidStrike($defendant)
     {
         if (rand(1, 100) < 11) {
-            if (($this->getStrength() - $defDefence) * 2 > 0) {
+            if($this->missAttack($defendant)) {
+                return 0;
+            }
+
+            if (($this->getStrength() - $defendant->getDefence()) * 2 > 0) {
                 echo "Orderus' lightning reflexes allow him to strike twice!\n";
-                return ($this->getStrength() - $defDefence) * 2;
+                return ($this->getStrength() - $defendant->getDefence()) * 2;
             } else {
                 return 0;
             }
         } else {
-            if ($this->getStrength() - $defDefence > 0) {
-                return $this->getStrength() - $defDefence;
+            if ($this->getStrength() - $defendant->getDefence() > 0) {
+                return $this->getStrength() - $defendant->getDefence();
             } else {
                 return 0;
             }
+
+//            parent::attack($defendant);
         }
     }
 
@@ -79,9 +83,7 @@ class Player extends BaseCreature implements Attack, TakeDamage, RapidStrike, Ma
             echo $attacker->getName() . " attacks " . $this->getName() . " for " . $dmg . " damage!\n";
             $this->checkIfDead();
         } else {
-            $this->setHealth($this->getHealth() - $dmg);
-            echo $attacker->getName() . " attacks " . $this->getName() . " for " . $dmg . " damage!\n";
-            $this->checkIfDead();
+            parent::takeDamage($attacker, $dmg);
         }
     }
 }
