@@ -3,6 +3,8 @@
 namespace App\Entity\Creatures;
 
 use App\Core\BaseCreature;
+use App\Entity\Battle;
+use App\Entity\BattleLog;
 use App\Inerfaces\Abilities\MagicShield;
 use App\Inerfaces\Abilities\RapidStrike;
 
@@ -53,7 +55,7 @@ class Player extends BaseCreature implements  RapidStrike, MagicShield
             }
 
             if (($this->getStrength() - $defendant->getDefence()) * 2 > 0) {
-                echo "Orderus' lightning reflexes allow him to strike twice!\n";
+                BattleLog::addToLog( "Orderus' lightning reflexes allow him to strike twice!\n");
                 return ($this->getStrength() - $defendant->getDefence()) * 2;
             } else {
                 return 0;
@@ -79,8 +81,8 @@ class Player extends BaseCreature implements  RapidStrike, MagicShield
         if (rand(1, 100) < 21) {
             $dmg = $dmg / 2;
             $this->setHealth($this->getHealth() - $dmg);
-            echo "Orderus' magic shield protects him and halves the damage taken!\n";
-            echo $attacker->getName() . " attacks " . $this->getName() . " for " . $dmg . " damage!\n";
+            BattleLog::addToLog("Orderus' magic shield protects him and halves the damage taken!\n");
+            BattleLog::addToLog($attacker->getName() . " attacks " . $this->getName() . " for " . $dmg . " damage!\n");
             $this->checkIfDead();
         } else {
             parent::takeDamage($attacker, $dmg);

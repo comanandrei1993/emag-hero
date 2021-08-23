@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Creatures\Player;
-
 class Battle
 {
     private $opponents;
@@ -52,7 +50,7 @@ class Battle
             $first->takeDamage($second, $second->attack($first));
 
             if ($countTurns == 20) {
-                echo "It's a draw!\n";
+                BattleLog::addToLog("It's a draw!\n");
                 return;
             }
 
@@ -60,9 +58,9 @@ class Battle
         }
 
         if ($first->getHealth() <= 0) {
-            echo 'Winner is ' . $second->getName();
+            BattleLog::addToLog('Winner is ' . $second->getName());
         } else {
-            echo 'Winner is ' . $first->getName();
+            BattleLog::addToLog('Winner is ' . $first->getName());
         }
     }
 }

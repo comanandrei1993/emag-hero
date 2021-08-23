@@ -4,6 +4,7 @@ require 'vendor/autoload.php';
 require 'processes/battle.php';
 
 use App\Entity\Battle;
+use \App\Entity\BattleLog;
 use App\Entity\Creatures\Player;
 use App\Entity\Creatures\WildBeast;
 
@@ -32,16 +33,21 @@ use App\Entity\Creatures\WildBeast;
 
     <?php require 'templates/main.php' ?>
 
-    <!--    <p>--><?php //battle($orderus, $wildBeast); ?><!--</p>-->
-
     <p>
         <?php
+
+        $battleLogs = new BattleLog();
 
         $battle = new Battle([$orderus, $wildBeast]);
 
         $battle->battle($battle->getOpponents());
+
         ?>
     </p>
+
+    <?php foreach($battleLogs->getLogs() as $log): ?>
+    <p><?php echo $log ?></p>
+    <?php endforeach; ?>
 </div>
 </body>
 </html>
