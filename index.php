@@ -1,10 +1,14 @@
 <?php
 require 'vendor/autoload.php';
 
-require 'processes/battle.php'
+require 'processes/battle.php';
 
-/** @var \App\Entity\Creatures\Player $orderus */
-/** @var \App\Entity\Creatures\WildBeast $wildBeast */
+use App\Entity\Battle;
+use App\Entity\Creatures\Player;
+use App\Entity\Creatures\WildBeast;
+
+/** @var Player $orderus */
+/** @var WildBeast $wildBeast */
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +32,16 @@ require 'processes/battle.php'
 
     <?php require 'templates/main.php' ?>
 
-    <p><?php battle($orderus, $wildBeast); ?></p>
+    <!--    <p>--><?php //battle($orderus, $wildBeast); ?><!--</p>-->
+
+    <p>
+        <?php
+
+        $battle = new Battle([$orderus, $wildBeast]);
+
+        $battle->battle($battle->getOpponents());
+        ?>
+    </p>
 </div>
 </body>
 </html>
