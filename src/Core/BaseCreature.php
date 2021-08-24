@@ -128,6 +128,11 @@ abstract class BaseCreature
         }
     }
 
+    /////////////////////////////////
+    // Implement MissAttack Trait //
+    ///////////////////////////////
+    use MissAttack;
+
     /////////////////////////////
     // Implement Attack Trait //
     ///////////////////////////
@@ -143,9 +148,4 @@ abstract class BaseCreature
     // Implement TakeDamage Trait //
     ///////////////////////////////
     use TakeDamage;
-
-    /////////////////////////////////
-    // Implement MissAttack Trait //
-    ///////////////////////////////
-    use MissAttack;
 }

@@ -6,7 +6,7 @@ use App\Entity\Creatures\WildBeast;
 use PHPUnit\Framework\TestCase;
 
 class PlayerDealsDamageTest extends TestCase {
-    public function testMissAttack() {
+    public function testDealDamage() {
         $wildBeast = new WildBeast();
         $wildBeast->setLuck(0);
         $wildBeast->setDefence(0);
