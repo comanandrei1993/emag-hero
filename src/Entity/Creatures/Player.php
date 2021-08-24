@@ -3,14 +3,13 @@
 namespace App\Entity\Creatures;
 
 use App\Core\BaseCreature;
-use App\Entity\Battle;
 use App\Entity\BattleLog;
 use App\Inerfaces\Abilities\MagicShield;
 use App\Inerfaces\Abilities\RapidStrike;
 
 class Player extends BaseCreature implements  RapidStrike, MagicShield
 {
-    private $name;
+    private $name = 'Orderus';
 
     public function __construct()
     {
@@ -21,8 +20,6 @@ class Player extends BaseCreature implements  RapidStrike, MagicShield
             rand(40, 50),  // Speed
             rand(10, 30)   // Luck
         );
-
-        $this->name = 'Orderus';
     }
 
     public function __toString()
