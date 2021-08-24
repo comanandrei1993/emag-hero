@@ -1,11 +1,9 @@
 <?php
 /////////////// CLASSES /////////////////////
 // Player Class
-/** @var Player $orderus */
 use App\Entity\Creatures\Player;
 
 // WildBeast Class
-/** @var WildBeast $wildBeast */
 use App\Entity\Creatures\WildBeast;
 
 ////////////// END OF CLASSES //////////////

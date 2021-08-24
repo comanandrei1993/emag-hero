@@ -63,8 +63,6 @@ class Player extends BaseCreature implements  RapidStrike, MagicShield
             } else {
                 return 0;
             }
-
-//            parent::attack($defendant);
         }
     }
 
